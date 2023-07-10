@@ -135,94 +135,111 @@ $result = $tourcms->search_tours($querystring, $channel_id);
 						</div>
 						<div class="row">
 
-							<!--- Desktop version of tour HTML, shown automatically at desktop resolutions -->
+							<!-- We do foreach for each tour, first verifying the result of the api query -->
+							<?php
+							if ($result->error == "OK") {
+								?>
+								<!-- <?php
+								var_dump($result->tour); // Debugging
+								?> -->
+								<?php
+								foreach ($result->tour as $tour) {
+									?>
+									<!--- Desktop version of tour HTML, shown automatically at desktop resolutions -->
+									<div class="col-12" id="postsdasd-49"
+										class="post-49 tour type-tour status-publish hentry tag-inline product-type-day-tours location-berlin">
+										<div class="card tour-desktop">
+											<div class="tourcms-card-horizontal">
+												<div class="tourcms-card-horizontal-pic">
 
-							<div class="col-12" id="postsdasd-49"
-								class="post-49 tour type-tour status-publish hentry tag-inline product-type-day-tours location-berlin">
-								<div class="card tour-desktop">
-									<div class="tourcms-card-horizontal">
-										<div class="tourcms-card-horizontal-pic">
+													<div id="c-49-d" class="carousel slide" data-interval="false">
+														<div class="carousel-inner">
+															<div class="carousel-item active">
+																<img class="d-block w-100"
+																	src="https://cdn.tourcms.com/a/14718/1/1/default.jpg"
+																	alt="">
+															</div>
+														</div>
+													</div>
+												</div>
+												<a
+													href="https://wordpress.tourcms.com/tours/day-tour-example-1-departure-a-day-inline-booking/"><span
+														class="dummy"></span><span class="dummy-upper-right"></span></a>
+												<div class="card-body">
+													<div class="left">
+														<span class="tourcms-badge-tourtype-horizontal"><a
+																href="https://wordpress.tourcms.com/tours-by-type/day-tours/"
+																rel="tag">Day tours</a></span><span
+															class="tourcms-badge-location-horizontal"> <a
+																href="https://wordpress.tourcms.com/tours-by-location/berlin/"
+																rel="tag">Berlin</a></span>
+													</div>
+													<div class="right price-panel">
+														<p class="tourcms-card-text price-label" style="">Book now</p>
+														<p class="tourcms-card-text price"><span class='fromprice'>from
+																&#8364;20</span></p>
+													</div>
 
-											<div id="c-49-d" class="carousel slide" data-interval="false">
-												<div class="carousel-inner">
-													<div class="carousel-item active">
-														<img class="d-block w-100"
-															src="https://cdn.tourcms.com/a/14718/1/1/default.jpg"
-															alt="">
+													<div class="card-meta-right">
+														<h5 class="tourcms-card-title">Day Tour Example (1 Departure a day)
+															Inline booking</h5>
+														<p class="tourcms-card-text tourcms_wp_summary">This product description
+															is for showcase purposes only, like "This tour will show you the
+															highlights of Berlin and explain its rich history"</p>
+														<p class="tourcms-card-text"> <b>Duration:</b> 4 hours</p>
+
 													</div>
 												</div>
 											</div>
 										</div>
-										<a
-											href="https://wordpress.tourcms.com/tours/day-tour-example-1-departure-a-day-inline-booking/"><span
-												class="dummy"></span><span class="dummy-upper-right"></span></a>
-										<div class="card-body">
-											<div class="left">
-												<span class="tourcms-badge-tourtype-horizontal"><a
-														href="https://wordpress.tourcms.com/tours-by-type/day-tours/"
-														rel="tag">Day tours</a></span><span
-													class="tourcms-badge-location-horizontal"> <a
-														href="https://wordpress.tourcms.com/tours-by-location/berlin/"
-														rel="tag">Berlin</a></span>
-											</div>
-											<div class="right price-panel">
-												<p class="tourcms-card-text price-label" style="">Book now</p>
-												<p class="tourcms-card-text price"><span class='fromprice'>from
-														&#8364;20</span></p>
-											</div>
-
-											<div class="card-meta-right">
-												<h5 class="tourcms-card-title">Day Tour Example (1 Departure a day)
-													Inline booking</h5>
-												<p class="tourcms-card-text tourcms_wp_summary">This product description
-													is for showcase purposes only, like "This tour will show you the
-													highlights of Berlin and explain its rich history"</p>
-												<p class="tourcms-card-text"> <b>Duration:</b> 4 hours</p>
-
-											</div>
-										</div>
 									</div>
-								</div>
-							</div>
 
-							<!--- End Desktop tour HTML -->
+									<!--- End Desktop tour HTML -->
 
-							<!--- Mobile version of tour HTML, shown automatically at mobile resolutions -->
-							<div class="col-12 col-md-6 col-lg-4 col-xl-3">
-								<div class="card tour-mobile">
+									<!--- Mobile version of tour HTML, shown automatically at mobile resolutions -->
+									<div class="col-12 col-md-6 col-lg-4 col-xl-3">
+										<div class="card tour-mobile">
 
-									<div id="c-49-m" class="carousel slide" data-interval="false">
-										<div class="carousel-inner">
-											<div class="carousel-item active">
-												<img class="d-block w-100"
-													src="https://cdn.tourcms.com/a/14718/1/1/default.jpg" alt="">
+											<div id="c-49-m" class="carousel slide" data-interval="false">
+												<div class="carousel-inner">
+													<div class="carousel-item active">
+														<img class="d-block w-100"
+															src="https://cdn.tourcms.com/a/14718/1/1/default.jpg" alt="">
+													</div>
+												</div>
+											</div>
+											<div class="card-body">
+												<h5 class="card-title">Day Tour Example (1 Departure a day) Inline booking</h5>
+												<div style="margin-top:-0.8rem;"><span class="badge badge-location"> <a
+															href="https://wordpress.tourcms.com/tours-by-location/berlin/"
+															rel="tag">Berlin</a></span><span class="badge badge-tourtype"><a
+															href="https://wordpress.tourcms.com/tours-by-type/day-tours/"
+															rel="tag">Day tours</a></span></div>
+												<!--              <p class="card-text"><i class="fas fa-history" style=""></i> <b>Duration:</b> 4 hours</p>-->
+												<p class="tourcms-card-text">This product description is for showcase purposes
+													only, like "This tour will show you the highlights of Berlin and explain its
+													rich history"</p>
+											</div>
+											<div class="card-footer bg-transparent">
+												<p class="tourcms-card-text tour-mobile-footer-left"> <b>Duration:</b> 4
+													hours<br></p>
+												<p class="tourcms-card-text tour-mobile-footer-right" style=""><a
+														href="https://wordpress.tourcms.com/tours/day-tour-example-1-departure-a-day-inline-booking/">Book
+														now <span class='fromprice'>from &#8364;20</span></a><br></p>
 											</div>
 										</div>
 									</div>
-									<div class="card-body">
-										<h5 class="card-title">Day Tour Example (1 Departure a day) Inline booking</h5>
-										<div style="margin-top:-0.8rem;"><span class="badge badge-location"> <a
-													href="https://wordpress.tourcms.com/tours-by-location/berlin/"
-													rel="tag">Berlin</a></span><span class="badge badge-tourtype"><a
-													href="https://wordpress.tourcms.com/tours-by-type/day-tours/"
-													rel="tag">Day tours</a></span></div>
-										<!--              <p class="card-text"><i class="fas fa-history" style=""></i> <b>Duration:</b> 4 hours</p>-->
-										<p class="tourcms-card-text">This product description is for showcase purposes
-											only, like "This tour will show you the highlights of Berlin and explain its
-											rich history"</p>
-									</div>
-									<div class="card-footer bg-transparent">
-										<p class="tourcms-card-text tour-mobile-footer-left"> <b>Duration:</b> 4
-											hours<br></p>
-										<p class="tourcms-card-text tour-mobile-footer-right" style=""><a
-												href="https://wordpress.tourcms.com/tours/day-tour-example-1-departure-a-day-inline-booking/">Book
-												now <span class='fromprice'>from &#8364;20</span></a><br></p>
-									</div>
-								</div>
-							</div>
-							<!--- End Mobile tour HTML -->
-
-
+									<!--- End Mobile tour HTML -->
+									<?php
+								}
+								?>
+								<?php
+							} else {
+								// If not output the error
+								print "There has been an error: ";
+								print $result->error;
+							}
+							?>
 						</div>
 
 
