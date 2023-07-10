@@ -1,3 +1,40 @@
+<?php
+
+//La conexion a la api, requiere el vendor una vez hagas el install.
+
+require_once('vendor/autoload.php');
+
+use TourCMS\Utils\TourCMS as TourCMS;
+
+$marketplace_id = 126;
+
+$api_key = "5aed2d3d69ea";
+
+$timeout = 0;
+
+$channel_id = 0;
+
+$tourcms = new TourCMS($marketplace_id, $api_key, 'simplexml', $timeout);
+
+$tourcms->set_user_agent('Example Tours Website');
+
+
+$per_page = 10;
+$page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+
+
+$parameters = array(
+	"per_page" => $per_page,
+	"page" => $page,
+);
+
+$querystring = http_build_query($parameters);
+
+
+$result = $tourcms->search_tours($querystring, $channel_id);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en-GB">
 
