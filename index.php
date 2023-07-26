@@ -1,31 +1,35 @@
 <?php
 
-//La conexion a la api, requiere el vendor una vez hagas el install.
-
+//The connection to the api, requires the vendor once you do the install.
 require_once('vendor/autoload.php');
+
+//The config file, where we have the api key, marketplace id, timeout and channel id.
+require_once('config.php');
 
 use TourCMS\Utils\TourCMS as TourCMS;
 
-$marketplace_id = 126;
+//The key and configuration of the config (hidden)
+$marketplace_id = $marketplace_id_tours;
 
-$api_key = "5aed2d3d69ea";
+$api_key = $api_key_tours;
 
-$timeout = 0;
+$timeout = $timeout_tours;
 
-$channel_id = 0;
+$channel_id = $channel_id_tours;
 
 $tourcms = new TourCMS($marketplace_id, $api_key, 'simplexml', $timeout);
 
 $tourcms->set_user_agent('Example Tours Website');
 
-
+// How many pages to show
 $per_page = 10;
 $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
-
 
 $parameters = array(
 	"per_page" => $per_page,
 	"page" => $page,
+	"product_type" => 4,
+	"country" => "ES",
 );
 
 $querystring = http_build_query($parameters);
@@ -162,9 +166,8 @@ $result = $tourcms->search_tours($querystring, $channel_id);
 														</div>
 													</div>
 												</div>
-												<a
-													href="https://wordpress.tourcms.com/tours/day-tour-example-1-departure-a-day-inline-booking/"><span
-														class="dummy"></span><span class="dummy-upper-right"></span></a>
+												<a href="<?php echo $tour->tour_url; ?>"><span class="dummy"></span><span
+														class="dummy-upper-right"></span></a>
 												<div class="card-body">
 													<div class="left">
 														<span class="tourcms-badge-tourtype-horizontal"><a
@@ -217,8 +220,8 @@ $result = $tourcms->search_tours($querystring, $channel_id);
 													<?php echo $tour->tour_name; ?>
 												</h5>
 												<div style="margin-top:-0.8rem;"><span class="badge badge-location"> <a
-															href="https://wordpress.tourcms.com/tours-by-location/berlin/"
-															rel="tag"><i class="fas fa-map-marker-alt"></i>
+															href="<?php echo $tour->tour_url; ?>" rel="tag"><i
+																class="fas fa-map-marker-alt"></i>
 															<?php echo $tour->location; ?>
 														</a></span><span class="badge badge-tourtype"><a
 															href="https://wordpress.tourcms.com/tours-by-type/day-tours/"
@@ -234,7 +237,7 @@ $result = $tourcms->search_tours($querystring, $channel_id);
 													<?php echo $tour->duration_desc; ?><br>
 												</p>
 												<p class="tourcms-card-text tour-mobile-footer-right" style=""><a
-														href="https://wordpress.tourcms.com/tours/day-tour-example-1-departure-a-day-inline-booking/">Book
+														href="<?php echo $tour->tour_url; ?>">Book
 														now <span class='fromprice'>from
 															<?php echo $tour->from_price_display; ?>
 														</span></a><br></p>
